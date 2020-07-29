@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!--    配置集中管理属性-->
+    <property name ="pattern" value = "[%-5level] %d{yyyy-MM-dd HH:mm:ss}">    </property>
+
+    <appender name="" class=""></appender>
+</configuration>
+<!--可以通过logback 官网进行log4j.properties 的格式转换为logback.xml格式-->

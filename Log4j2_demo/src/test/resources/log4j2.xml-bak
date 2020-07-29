@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="INFO" strict="true" name="LogConfig">
+    <Properties>
+        <Property name="LOG_HOME">D:\logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d %-5p [%t] %-17c{2} %3x - %m %n</Pattern>
+            </PatternLayout>
+        </Console>
+        <RollingFile name="logService"
+                     fileName="${LOG_HOME}/log4j2-test.log"
+                     filePattern="${LOG_HOME}/log4j2-test-%d{yy-MM-dd}.log.gz">
+            <PatternLayout>
+                <Pattern>%d %-5p [%t] %-17c{2} %3x - %m %n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="fileLogger" level="INFO" additivity="false">
+            <AppenderRef ref="logService"/>
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+
+        <Root level="TRACE">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="logService"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
